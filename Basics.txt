@@ -1,0 +1,20 @@
+V8 
+-------------------------
+- Open source google javascript engine that implement ES xxxx
+- is used by google chrome and nodejs
+- underlying implemntation is c++ (reality c++ convert javascript to machine code)
+- has some hooks and extension points where you can add you own c++ codes and exposed them via javascript.
+
+nodejs
+------------------------
+**** nodejs =  javascript core + c++ core(v8 + c++ node libs)
+**** event driven , non-bloking I/O model
+
+How nodejs achieve async behaviour
+---------------------------
+Similar to how javascript behave asyn in browser
+1. call stack in V8 recongnise async functions and handed over to libuv
+2. libuv execute them in background
+3. once task finish push event to "event queue"
+4. "event loop" get event and send "callback fn" associated with event to V8 "call stack"
+
